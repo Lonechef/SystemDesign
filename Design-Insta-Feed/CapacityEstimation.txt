@@ -1,0 +1,6 @@
+-> Capacity estimation is basically our throughput 
+-> So we can divide that into two parts write throughput and Read throughput 
+-> So incase of our system basically write throughput means basically what all write functionality are we doing 
+so (1) User wants to post something (2)When user follows or unfollow eachother and laste is (3) Like and comment that also is write stuff on OUR DB
+-> So we assume the write throughput is basically 50 Million request / Daily
+-> And our read throughput is basically 50 billion request / Daily
