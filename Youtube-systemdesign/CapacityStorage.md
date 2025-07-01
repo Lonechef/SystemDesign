@@ -1,0 +1,4 @@
+-> So our main storing is of basically storing the videos 
+-> So we assume that avg size of video uploaded is 600 Mb and from throughput caluclation we found basically 0.4 million request per day
+-> So data stored in a day is basically 600 Mb * 0.4 million = 240 Tb/Day
+-> 

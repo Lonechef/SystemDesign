@@ -1,0 +1,13 @@
+-> So in this we have 2 types of users one who consumes the content and another who uploads the content
+-> So for viewers it is basically 2 things one is Streaming and another is Device Compatibility 
+-> For content creators we need to have an option to upload 
+-> While there can be few Nonfunctional requirements too 
+-> Users:
+-> Low latency 
+-> Scalability 
+-> User experience
+-> Availability  
+-> Nonfunctionalrequirements for content creators
+1) Scalability
+2) Security
+3) Storage reliability
