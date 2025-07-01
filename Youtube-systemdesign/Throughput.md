@@ -1,0 +1,4 @@
+-> So now in this our YT system design the read theroughput is more used as compared to write througput so basically the video uploader are comparitvely lesser then the one who consumes the video
+-> So we assume that 1/250 people upload video that mwan 100 million / 250 so we can say that 0.4 million people upload the vidoes in a day that means 0.4 million write operation
+-> Here in read throughput means our users watcheds the videos so for this we assume that a single user watches 10 videos/day and we have 100 million users per day so now it will become 1 Billion request Per Day hence we can say that 1 Billion read requests in a Day
+-> 

@@ -1,0 +1,2 @@
+->So for this we assume that our Daily Active Users are : 100 Million users
+->While Mothly Active Users areL 2.5 Billion users
