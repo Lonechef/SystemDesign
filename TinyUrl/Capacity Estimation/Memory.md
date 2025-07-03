@@ -1,0 +1,1 @@
+SO as we calucaltes we will out requirement is 30 GB/day which can be easily handled by cache so we will be using cache to store that

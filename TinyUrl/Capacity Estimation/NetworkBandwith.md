@@ -1,0 +1,2 @@
+So netweork band with we need to consider the flow of the Data which is basically for ingress we have 30 GB/day whihc will further get converted ionto data transferred in secinds 
+-> Wheile talking about egress whihc basicaly means the read query applied so we have 600 Billion Requests/Day so hence it will bcome 600 Billion * 200 Bytes = 1200 GB /Day further converting into secs is our Egress
