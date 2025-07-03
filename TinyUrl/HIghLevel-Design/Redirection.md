@@ -1,0 +1,1 @@
+-> So now over here basically once we get the shorurl now furthermore clicking on that url we need to be redirected to our ideal location but now basicaslly ehat happens client sends the short url in return our sytem guves the long url with that it sends the status code 301 to client whihch tells the client server to redicrect the short url to the long url.
