@@ -1,0 +1,1 @@
+-> Tiny Url service simply shortens the larger url 
