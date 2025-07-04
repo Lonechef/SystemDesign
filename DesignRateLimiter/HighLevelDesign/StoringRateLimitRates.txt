@@ -1,0 +1,15 @@
+- The client first sends a request to the Rate Limiter.
+- The Rate Limiter checks if the client has exceeded the allowed number of requests within a specific time window.
+- If the request is within the allowed limit, the Rate Limiter forwards it to the API Server; otherwise, it rejects or notifies the client.
+- Storing request counts in a traditional database is not feasible due to high frequency and latency concerns.
+- Redis is a suitable option for storing and checking request counts efficiently because of its speed and support for atomic operations.
+
+Flow Diagram:
+
+Client
+    |
+    v
+Rate Limiter -----> Redis (stores request counts)
+    |
+    v
+API Server

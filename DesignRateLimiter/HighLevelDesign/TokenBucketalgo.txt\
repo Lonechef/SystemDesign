@@ -1,0 +1,75 @@
+Token Bucket Algorithm - Notes
+
+Overview:
+-----------
+The Token Bucket algorithm is a popular rate-limiting technique used to control the rate at which requests are processed. It allows bursts of traffic while enforcing an average rate over time.
+
+How it Works:
+--------------
+1. **Bucket Capacity**: 
+    - The bucket has a fixed capacity (e.g., 3 tokens).
+    - It can hold up to the maximum number of tokens (coins).
+
+2. **Token Refilling**:
+    - Tokens are added to the bucket at a fixed interval (e.g., every 60 seconds).
+    - If the bucket is full, extra tokens are discarded.
+
+3. **Request Handling**:
+    - Each incoming request consumes 1 token.
+    - If there are tokens available, the request is allowed.
+    - If the bucket is empty (no tokens), the request is rejected.
+
+Example Timeline:
+------------------
+- At t = 0s: Bucket has 3 tokens.
+- At t = 30s: 2 requests arrive → 2 tokens consumed, 1 token left.
+- At t = 45s: 1 request arrives → 1 token consumed, 0 tokens left.
+- At t = 50s: 1 request arrives → No tokens left, request rejected.
+- At t = 60s: Bucket refilled to 3 tokens.
+- At t = 70s: 1 request arrives → 1 token consumed, 2 tokens left.
+- At t = 120s: Bucket refilled by 1 token (since 2 tokens remain), now 3 tokens.
+
+Pictorial Representation:
+--------------------------
+Time (seconds) →
+|----0----|---30---|---45---|---50---|---60---|---70---|--120--|
+Tokens:   [3]     [1]     [0]     [0]     [3]     [2]     [3]
+Events:   Start   -2R     -1R     -1R    Refill  -1R     Refill
+
+Legend:
+- [n]: Number of tokens in the bucket
+- -nR: n requests consume tokens
+- Refill: Bucket refilled to capacity
+
+Pros:
+------
+- Simple to implement
+- Memory efficient
+- Allows burst/sudden traffic
+
+Cons:
+------
+- Choosing optimal bucket capacity and refill rate is critical
+
+Diagram:
+---------
+          +-------------------+
+          |    Token Bucket   |
+          +-------------------+
+          | Capacity: 3       |
+          | Refill: 60 sec    |
+          +-------------------+
+                     |
+                     v
+          +-------------------+
+          |   Incoming Req    |
+          +-------------------+
+                     |
+          +-------------------+
+          | If token present? |
+          +-------------------+
+              /           \
+            Yes           No
+             |             |
+    Allow request   Reject request
+     (consume 1)      (no token)

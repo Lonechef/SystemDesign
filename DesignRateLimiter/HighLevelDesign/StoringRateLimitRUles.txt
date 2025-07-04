@@ -1,0 +1,14 @@
+Client
+    |
+    v
+Rules Cache <------ Rules Service <------ Rules DB
+    |                                   (periodic update)
+    v
+Counter Cache (Redis)
+    |
+    v
+[Is count within threshold?]
+    |                |
+Yes               No
+    |                |
+Server         Notify User (Limit Exceeded)
