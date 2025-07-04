@@ -1,0 +1,3 @@
+->  So we assume that each users makes a 100 Api requests/day 
+-> Hence it will be 500 million DAU
+-> 500 M * 100 requests/day = 50 Billion request/day
