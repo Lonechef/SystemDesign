@@ -1,0 +1,6 @@
+-> So in simple terms rate limiter basically means lets say in amusement part we have a roller coaster and a person is allowed to ride twice in a day and there is a security guard keeping a watch so it wont allow any one to seat twice
+-> SO rate limiter is simply just like a security guard 
+-> THis basically ensures a singlke user not over whelming our system 
+-> Functional requirement : Based on IP address we can restrict each unique IP address just 100 requests/ minutes
+also can be baed on userid, sessionid, deviceid
+-> UserNotification : Notify user that it has exceeded the limit 
