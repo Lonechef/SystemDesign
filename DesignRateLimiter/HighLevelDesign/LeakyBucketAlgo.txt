@@ -1,0 +1,31 @@
+The Leaky Bucket Algorithm is a rate-limiting algorithm used to control the rate at which requests are processed.
+
+Explanation:
+- Imagine a bucket with a small hole at the bottom. Water (representing incoming requests) is poured into the bucket, and it leaks out at a constant rate (representing the allowed request rate).
+- If water is poured in faster than it leaks out, the bucket will eventually overflow. Similarly, if requests arrive faster than they can be processed, excess requests are discarded or queued.
+- The bucket has a fixed capacity. If the bucket is full, any additional incoming water (requests) is rejected until there is space.
+
+Example:
+- Suppose the bucket (queue) can hold up to 6 requests, and the leak rate (processing rate) is 4 requests per minute.
+- At t = 0 seconds: 1 request arrives and is added to the queue.
+- At t = 30 seconds: 2 more requests arrive and are added to the queue (total = 3).
+- At t = 45 seconds: 3 more requests arrive (total = 6, queue is now full).
+- At t = 60 seconds: 4 requests are processed and removed from the queue (queue size = 2).
+- At t = 60 seconds: 5 new requests arrive. Only 4 can be added (queue size = 6), and 1 is rejected.
+
+Pictorial Representation:
+
+Incoming Requests
+    |
+    v
++-------------------+
+|    Leaky Bucket   |  <-- Capacity: 6 requests
+|   (Request Queue) |
++-------------------+
+    |
+    v
+Processed at constant rate (4 req/min)
+
+If the bucket is full, new requests are rejected until space is available.
+
+Number of requests in the queue = Number of tokens in the bucket.

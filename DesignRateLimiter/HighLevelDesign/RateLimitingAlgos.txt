@@ -1,0 +1,6 @@
+So core logic can be based on 5 algos
+(1) Token BUcket 
+(2) Leaky BUcket
+(3) Fixed window Counter
+(4) Sliding window logic
+(5) SLiding window Counter

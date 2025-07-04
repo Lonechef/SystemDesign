@@ -1,0 +1,24 @@
+Placement of Rate Limiter
+
+There are multiple ways to place a rate limiter in a system:
+
+1) Before the API Servers
+    - The rate limiter sits in front of the API servers and filters requests before they reach the servers.
+
+    PROS:
+      - Enhanced security.
+      - Reduced load on API servers by blocking unnecessary requests early.
+
+    CONS:
+      - Increased latency due to the extra hop.
+      - Single point of failure: if the rate limiter fails, all traffic is affected.
+
+2) Within the API Servers
+    - Each API server implements its own rate limiting logic.
+
+    PROS:
+      - Granular control: allows for custom rate limiting per server or service.
+      - No central point of failure.
+
+    CONS:
+      - Increased server load, as each server must handle rate limiting in addition to its main tasks.
