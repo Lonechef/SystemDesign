@@ -1,0 +1,42 @@
+-> Handling Race Condition
+-> So in case what happens basically our from a single user we receive two requests at the same time so ideallywhat happens the counter whihc was intially 6 should get 8 but what happends instead it gets increased by one only 
+-> basically this happens so first req comes in and it yet hasnt been compleyted and second req comes in between so this is called as race Condition
+-> THat means two request are racong and trying to update the same valyue 
+-> SO THIS CAN BE DONE BY B ASICALLY PUSING LOCKS SO THIS BASICALLY what happens is it waits for one requests and another request have to wait 
+-> So 2nd request tries but 1st has already locked the cache therefore 2nd request has no other option but to Walkthrough
+
+-> To properly handle race conditions, we use synchronization mechanisms like locks or mutexes. When a request wants to update the shared counter, it must first acquire the lock. This ensures that only one request can modify the counter at a time. Other requests must wait until the lock is released. This prevents inconsistent updates and ensures the counter value is correct. In distributed systems, distributed locks (like Redis or Zookeeper locks) are used to achieve the same effect across multiple servers
+Certainly! Here’s a clear explanation of handling race conditions:
+
+What is a Race Condition?
+A race condition occurs when two or more processes (or threads, or requests) try to access and modify shared data at the same time. If the operations are not managed properly, the final result can be unpredictable or incorrect.
+
+Example Scenario
+Suppose you have a counter set to 6. Two requests from the same user arrive at almost the same time, both trying to increment the counter by 1. Ideally, the counter should become 8 (6 + 1 + 1). But if both requests read the value before either writes it back, both see 6, increment to 7, and write back 7. The counter only increases by 1 instead of 2.
+
+Why Does This Happen?
+Both requests read the value (6) at the same time.
+Both increment it to 7.
+Both write 7 back, one after the other.
+The increment from one request is lost.
+How to Handle Race Conditions?
+The most common way is to use locks or synchronization mechanisms.
+
+How Locks Work
+When a request wants to update the shared value, it acquires a lock.
+While the lock is held, other requests must wait.
+Once the first request finishes updating and releases the lock, the next request can proceed.
+This ensures that only one request can modify the shared data at a time, preventing conflicts.
+
+Analogy
+Think of a bathroom with a single key:
+
+Only one person can use it at a time (lock).
+Others must wait outside until the key is available.
+In Code
+Here’s a simple pseudocode example:
+
+Key Points
+Race conditions happen when multiple processes try to update shared data at the same time.
+Locks ensure only one process can update the data at a time, preventing data corruption.
+Always use proper synchronization when dealing with shared resources in concurrent environments.

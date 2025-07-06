@@ -1,0 +1,38 @@
+-> In simple ters if we want to say then then it is the average of Fixed window Algo & Sliding window algo 
+-> So first we will run the fixed algo
+-> So our capacity is 6 requests per minute so at t = 0 sec we have 1 req at t = 20 sec we have 2 req and t =40 sec we haev 3 req so til t =60 sec we have 6 req 
+-> So how fixed algo will work is basically if we see till t = 60 sec we have 6 req which is exact to our capacity so no rate limit further more at t = 60 to t = 80 three more req came so that is also in range so no rate limiting but if we consider the range from t = 20 to t=80 then in that case we have 8 req but our fixed algo will not catch this and wont condioer this 
+-> The reason behind this is basically the fixed algo just considers the fixed windo so in our current case it is 0 to 60 and 60 to 120 so it will not consider the reqs from t = 20 to t = 80 which actually is 8 that is greater then our capacity but this will not consider as this is not in our window
+-> To solve this issue we have sliding window whihc basically considers the rnage wise re [0-60,0] [20-60,20] [40-60,40] [60-60,60] [80-60,80] so this will be [20,80] range ans in this we have 6 req which is  8 is not less then 6 so the last two req will be rehjected and condiderd in the next session
+-> So thus algo workds but more space , more reosurces and not that efficient 
+-> So now comes out slifing window counter algo which is basically average of requests in prev window + the requests in the current window
+-> So from 0 to 60 our window is 6 req and from 60 to 80 our window is 3 req so the average will be (20-60)  So it will be (40/60)*6 = 4 request , so in current 3 and prev 4 so 3+4 = 7 request 
+-> Hence total 7 req so last req will be rejected  
+
+# Pictorial Representation
+
+# Fixed Window Counter
+# |----60s----|----60s----|
+# | 6 req     | 3 req     |
+# At t=80s, fixed window only sees 3 req in current window (60-120s), so allows all.
+
+# Sliding Window Log
+# Considers all requests in the last 60s at any time.
+# At t=80s, window is [20s,80s]: 8 req, so last 2 req are rejected.
+
+# Sliding Window Counter
+# At t=80s:
+# - Previous window (0-60s): 6 req
+# - Current window (60-80s): 3 req
+# - Overlap: 20s into current window
+# - Weighted count: (40/60)*6 = 4 (from previous window)
+# - Total: 4 (prev) + 3 (current) = 7 req
+# - Capacity: 6 req, so last req is rejected.
+
+# Diagram:
+# Time: 0s   20s   40s   60s   80s
+#       |----|-----|-----|-----|
+# Req:   1     2     3     3
+# Fixed: [0-60] [60-120]
+# Sliding: [20-80]
+# Sliding Counter: Combines weighted prev + current window
