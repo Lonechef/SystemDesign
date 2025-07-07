@@ -1,0 +1,1 @@
+-> So group messaging in the wp is similar to the 1:1 socket connection the only difference is there are multiple reciepents so hence now over here max sends the message so server will receive it then it will brodcast messages to the group memebers 
