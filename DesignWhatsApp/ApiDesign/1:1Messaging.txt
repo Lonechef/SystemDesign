@@ -1,0 +1,8 @@
+-> So what happens over here is User 1 sends the message first it goes to whatsapp server then it goes to the user 2 
+-> So in simple terms if we say then we need to write a simple service where basically we sends the message to whatsapp service and then whatsapp service reverst back 
+-> BUt HTTP doesent work because HTTP alway one way traffic only that is client to server so user 1 can send the HTTP request with the message to the server but user 2 cannot recieve back the message
+-> So now for this we will require two way so like client to server and server to client so in this web sockets comes to play the role 
+-> So in simple terms websockes allows the bidirectional commucnication basically websocket is the upgraded version of HTTP requesst 
+-> SO lets say client want to send the get request so in the url "ws" then on basis of that whatsapp server will know that the client wants the websocket hence server will send the
+acknowledgement status code which allows bidirectional communication 
+-> Websocket allows the open connection that allows direct data exchange without need of any HTTP request model 
