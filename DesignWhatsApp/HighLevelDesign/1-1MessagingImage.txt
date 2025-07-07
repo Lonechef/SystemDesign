@@ -1,0 +1,6 @@
+-> So now we will see if the client A wants to send the 
+-> SO basically what happens over here is simply client A when clicks on that pin icon and selects the file then what happens it is before sending this file as you select
+it gets start to upload to whataspp server and then after uploaded client A receives the file url 
+-> Client -> ApiGateway -> Asset Service(Via LOadbalancer in simple terms asset service is just servicr managing media) -> Object Storage where image gets uploaded
+-> Object Storage -> CDN which will get us the url of the image and sends back that url to the client and then when client clicks on the send button the whole process that was for txt will be followed 
+-> And then the client 2 will recive this url using that url via cdn client 2 will download the image
