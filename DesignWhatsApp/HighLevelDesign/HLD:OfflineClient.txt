@@ -1,0 +1,34 @@
+-> So this is the scenario when websocket handler 2 while sending the message to the client 2 in that case if the client 2 goes offline then in that case 
+basically between that we will keep the Database whihc will basically store the message in this scenario 
+-> So now what happens WebSocketHandler 1 -> Message Service -> MongoDb this will store the data in Message Db hence when websocket hanlder 2 notify about the m
+message to client 2 when user gets online from DB it can take message and send to the Client 2
+
+-> So now once client 2 comes onlint the call will got to websocket handler 2 whihc will first call websocket connection Mager whihch is connected to WS connections cache from whihc we will get the connection id and then ws handler 2 will call the message service and ask for any message to be send to client 2a
+
+--------------------------------------------------------------------------------
+Pictorial View of Offline Message Delivery Flow:
+
+Client 1                WebSocketHandler 1         Message Service         MongoDB         WebSocketHandler 2         Client 2
+    |                           |                        |                     |                    |                     |
+    |---Send Message----------->|                        |                     |                    |                     |
+    |                           |---Store Message------->|------------------->|                    |                     |
+    |                           |                        |                     |                    |                     |
+    |                           |                        |                     |                    |                     |
+    |                           |                        |                     |                    |                     |
+    |                           |                        |                     |                    |                     |
+    |                           |                        |                     |                    |                     |
+    |                           |                        |                     |                    |                     |
+    |                           |                        |                     |<-------------------|---Client 2 Online---|
+    |                           |                        |                     |                    |                     |
+    |                           |                        |                     |---Fetch Messages-->|                     |
+    |                           |                        |<-------------------|                    |                     |
+    |                           |                        |                     |---Send Message--->|-------------------->|
+    |                           |                        |                     |                    |                     |
+
+Explanation:
+1. Client 1 sends a message to Client 2.
+2. WebSocketHandler 1 receives the message and passes it to the Message Service.
+3. Message Service stores the message in MongoDB.
+4. If Client 2 is offline, the message stays in MongoDB.
+5. When Client 2 comes online, WebSocketHandler 2 checks the connection manager and fetches pending messages from the Message Service (which reads from MongoDB).
+6. WebSocketHandler 2 sends the pending messages to Client 2.

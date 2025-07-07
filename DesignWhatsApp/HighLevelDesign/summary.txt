@@ -1,0 +1,22 @@
+
+Here's a summary of the message flow from Client 1 to Client 2:
+
+1. **WebSocket Connection Establishment:**
+   - Both Client 1 and Client 2 establish a persistent WebSocket connection with the server through an API Gateway and a Load Balancer.
+   - A WebSocket Connection Manager service keeps track of which WebSocket Handler server each client is connected to. This mapping is stored in a cache for quick lookups.
+
+2. **Sending a Message (Online Scenario):**
+   - Client 1 sends a message intended for Client 2 to the API Gateway.
+   - The API Gateway forwards the message to the WebSocket Handler connected to Client 1 (let's call it WS Handler 1).
+   - WS Handler 1 looks up the WebSocket Connection Manager to find out which handler is connected to Client 2 (let's call it WS Handler 2).
+   - WS Handler 1 forwards the message to WS Handler 2.
+   - WS Handler 2 sends the message to Client 2 through its established WebSocket connection.
+
+3. **Handling Offline Messages:**
+   - If Client 2 is offline when Client 1 sends a message, WS Handler 2 will not be able to deliver it.
+   - In this case, the message is passed to a Message Service.
+   - The Message Service stores the message in a database (e.g., MongoDB).
+   - When Client 2 comes back online, it establishes a new WebSocket connection.
+   - The corresponding WebSocket Handler (let's say WS Handler 2) queries the Message Service to check for any undelivered messages for Client 2.
+   - The Message Service retrieves the stored messages from the database and sends them to WS Handler 2.
+   - WS Handler 2 then delivers the messages to Client 2.
