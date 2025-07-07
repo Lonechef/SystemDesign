@@ -1,0 +1,5 @@
+-> So for storage estimation we need to assume few things first is Text Messages are of 100 Bytes Image, video & Documents are of 250 Kb
+-> And from thorughput estimation we know that we have 30 Billon write requests per day \
+-> ANother assumptrion there are in total 100 meesage then 99 are text and 1 is a media message 
+Storage of text message = 30 Billion * 0.99 * 100 Bytes = 2.97 TeraBytes/day
+Storage of media message = 30 Billion * 0.01  * 100 Bytes = 75 Tera Bytes/day 

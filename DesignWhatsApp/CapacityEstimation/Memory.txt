@@ -1,0 +1,3 @@
+-> So in this when we talk about memory then we talk about the cache Memory so basically acessing stuff from DB is time consuming hence we will go for cache memory
+-> So we are assuming that we are storing our 0.5% of the data in cache then
+Cache memory = 0.005 * Daily Storage
